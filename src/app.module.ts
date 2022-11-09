@@ -16,7 +16,7 @@ import { Category } from './category/category.entity';
       url:'postgres://postgres:mustafar2013@localhost:5432/devshop',
       autoLoadEntities:true,
       synchronize:true,
-      entities: [Category],
+     // entities: [Category],
       logging:true
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
