@@ -7,4 +7,7 @@ export class CategoryPublic{
 
     @Field({ nullable: true})
     name: string
+
+    @Field({ nullable: true})
+    slug: string
 }

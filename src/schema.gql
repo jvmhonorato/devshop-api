@@ -5,8 +5,18 @@
 type Category {
   id: String
   name: String
+  slug: String
 }
 
 type Query {
   getAllCategories: [Category!]!
+}
+
+type Mutation {
+  createCategory(input: CategoryCreateInput!): Category!
+}
+
+input CategoryCreateInput {
+  name: String!
+  slug: String!
 }
