@@ -20,7 +20,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         type: 'postgres',
         url: configService.get('DATABASE_URL'),
         synchronize:true,
-        logging:true
+        logging:true,
+        autoLoadEntities: true
       })
     }),
     // TypeOrmModule.forRoot({
