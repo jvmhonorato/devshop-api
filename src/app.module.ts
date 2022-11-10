@@ -7,18 +7,30 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import  {TypeOrmModule} from '@nestjs/typeorm'
 import { Category } from './category/category.entity';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type:'postgres',
-      url:'postgres://postgres:mustafar2013@localhost:5432/devshop',
-      autoLoadEntities:true,
-      synchronize:true,
-     // entities: [Category],
-      logging:true
+    ConfigModule.forRoot({ isGlobal:true }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async(configService: ConfigService) => ({
+        type: 'postgres',
+        url: configService.get('DATABASE_URL'),
+        synchronize:true,
+        logging:true
+      })
     }),
+    // TypeOrmModule.forRoot({
+    //   type:'postgres',
+    //   url:'postgres://postgres:mustafar2013@localhost:5432/devshop',
+    //   autoLoadEntities:true,
+    //   synchronize:true,
+    //  // entities: [Category],
+    //   logging:true
+    // }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
