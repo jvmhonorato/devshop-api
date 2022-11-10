@@ -3,25 +3,25 @@ import { Category } from "./category.entity";
 import { CategoryService } from "./category.service";
 import { CategoryPublic } from "./dto/category";
 import { CategoryCreateInput } from "./dto/category-create.input";
+import { CategoryMapper } from "./dto/category.mapper";
 
 //from Category
 @Resolver(of => CategoryPublic)
 
 export class CategoryResolver{
     constructor(private readonly categoryService: CategoryService) {}
+    //Query read category
     @Query(() => [CategoryPublic], { name: 'getAllCategories'})
     async getAllCategories(): Promise<CategoryPublic[]>{
         return await this.categoryService.findAll()
     }
 
-  // create category input
+  //Mutation  create category input
     @Mutation(returns => CategoryPublic, {name: 'createCategory' })
     async createCategory(
        @Args('input') input: CategoryCreateInput
     ): Promise<CategoryPublic> {
-        const categoryEntity = new Category()
-        categoryEntity.name = input.name 
-        categoryEntity.slug = input.slug
-        return this.categoryService.create(categoryEntity)
+        
+        return this.categoryService.create(CategoryMapper.toEntity(input))
     }
 }

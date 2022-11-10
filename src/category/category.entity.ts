@@ -1,5 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 
+//data interface of app
 
 @Entity()
 export class Category {
