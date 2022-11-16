@@ -18,4 +18,14 @@ export class CategoryService {
     async create(input: Category): Promise<Category>{
         return this.categoryRepository.save(input)
     }
+
+    async delete(id: string): Promise<boolean>{
+        try {
+            await this.categoryRepository.delete(id)
+            return true
+        } catch(err) {
+            return false
+        }
+         
+    }
 } 

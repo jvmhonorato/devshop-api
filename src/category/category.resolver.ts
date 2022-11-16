@@ -24,4 +24,12 @@ export class CategoryResolver{
         
         return this.categoryService.create(CategoryMapper.toEntity(input))
     }
+     //Mutation  create category input
+     @Mutation(returns => Boolean, {name: 'deleteCategory' })
+     async deleteCategory(
+        @Args('id') input: string
+     ): Promise<boolean> {
+         
+         return this.categoryService.delete(input)
+     }
 }
