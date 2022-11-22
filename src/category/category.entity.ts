@@ -7,7 +7,7 @@ export class Category {
 
     //generate ID
     @PrimaryGeneratedColumn('uuid')
-    id:string
+    id: string
 
 
     @Column({ length: 250, nullable:false})

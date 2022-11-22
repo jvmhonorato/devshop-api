@@ -10,4 +10,5 @@ export class CategoryMapper {
         entity.slug = input.slug
         return entity
     }
+    
 }

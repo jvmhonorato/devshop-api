@@ -3,6 +3,7 @@ import { Category } from "./category.entity";
 import { CategoryService } from "./category.service";
 import { CategoryPublic } from "./dto/category";
 import { CategoryCreateInput } from "./dto/category-create.input";
+import { CategoryUpdateInput } from "./dto/category-update.input";
 import { CategoryMapper } from "./dto/category.mapper";
 
 //from Category
@@ -10,10 +11,17 @@ import { CategoryMapper } from "./dto/category.mapper";
 
 export class CategoryResolver{
     constructor(private readonly categoryService: CategoryService) {}
-    //Query read category
+    //Query read all category
     @Query(() => [CategoryPublic], { name: 'getAllCategories'})
     async getAllCategories(): Promise<CategoryPublic[]>{
         return await this.categoryService.findAll()
+    }
+    //Query read by id
+    @Query(returns => CategoryPublic, { name: 'getCategoryById'})
+    async getCategoryById(
+        @Args('id') id: string
+        ): Promise<CategoryPublic> {
+        return await this.categoryService.findById(id)
     }
 
   //Mutation  create category input
@@ -24,7 +32,16 @@ export class CategoryResolver{
         
         return this.categoryService.create(CategoryMapper.toEntity(input))
     }
-     //Mutation  create category input
+
+     //Mutation  update category input
+     @Mutation(returns => CategoryPublic, {name: 'updateCategory' })
+     async updateCategory(
+        @Args('input') input: CategoryUpdateInput
+     ): Promise<CategoryPublic> {
+         
+         return this.categoryService.update(input)
+     }
+     //Mutation  delete category input
      @Mutation(returns => Boolean, {name: 'deleteCategory' })
      async deleteCategory(
         @Args('id') input: string

@@ -14,9 +14,16 @@ export class CategoryService {
     async findAll(): Promise<Category[]>{
         return this.categoryRepository.find()
     }
+    async findById(id): Promise<Category> {
+        return this.categoryRepository.findOneBy(id)
+    }
 
     async create(input: Category): Promise<Category>{
         return this.categoryRepository.save(input)
+    }
+    async update(input: Category): Promise<Category>{
+        await this.categoryRepository.update(input.id,input)
+        return input
     }
 
     async delete(id: string): Promise<boolean>{
