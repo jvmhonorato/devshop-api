@@ -15,7 +15,7 @@ export class CategoryService {
         return this.categoryRepository.find()
     }
     async findById(id): Promise<Category> {
-        return this.categoryRepository.findOneBy(id)
+        return this.categoryRepository.findOne({where:{id}})
     }
 
     async create(input: Category): Promise<Category>{
