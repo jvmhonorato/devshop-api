@@ -7,9 +7,6 @@
   "license": "UNLICENSED",
   "scripts": {
     "typeorm": "typeorm-ts-node-esm -d ./ormconfig.ts",
-    "migrate:create": "typeorm migration:create \"./typeorm/migrations/",
-    "migrate:up": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run -d ormconfig.ts",
-"migrate:down": "ts-node --transpile-only ./node-modules/typeorm/cli.js migration:revert",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
