@@ -42,5 +42,13 @@ export class ProductResolver {
          return this.productService.update(ProductMapper.fromUpdateToEntity(input))
      }
      
+      //Mutation  delete product input
+      @Mutation(returns => Boolean, {name: 'deleteProduct' })
+      async deleteProduct(
+         @Args('id') input: string
+      ): Promise<boolean> {
+          
+          return this.productService.delete(input)
+      }
 
 }

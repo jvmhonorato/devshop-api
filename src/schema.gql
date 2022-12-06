@@ -28,6 +28,7 @@ type Mutation {
   deleteCategory(id: String!): Boolean!
   createProduct(input: ProductCreateInput!): product!
   updateProduct(input: ProductUpdateInput!): product!
+  deleteProduct(id: String!): Boolean!
 }
 
 input CategoryCreateInput {
