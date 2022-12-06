@@ -8,5 +8,5 @@ import { CategoryService } from "./category.service";
     imports: [TypeOrmModule.forFeature([Category])],
     providers:[CategoryService, CategoryResolver]
 })
-
+//always create a empty class to export Modules
 export class CategoryModule{}

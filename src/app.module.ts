@@ -8,6 +8,7 @@ import { join } from 'path';
 import  {TypeOrmModule} from '@nestjs/typeorm'
 import { Category } from './category/category.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ProductModule } from './product/product.module';
 
 
 @Module({
@@ -36,7 +37,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
-    CategoryModule
+    CategoryModule,
+    ProductModule
   ],
   controllers: [AppController],
   providers: [AppService],
