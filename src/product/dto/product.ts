@@ -13,4 +13,7 @@ export class ProductPublic {
     @Field({ nullable: true})
     slug: string
 
+    @Field({nullable: true})
+    description: string
+
 }

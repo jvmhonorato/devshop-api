@@ -25,6 +25,6 @@ export class Product {
         type => Category,
         category => category.id
     )
-    categoy: Category
+    category: Category
 
 }

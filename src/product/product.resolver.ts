@@ -2,7 +2,8 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
 
 import { ProductPublic } from "./dto/product";
-import { ProductCreateInput } from "./dto/product.create.input";
+import { ProductCreateInput } from "./dto/product-create.input";
+import { ProductUpdateInput } from "./dto/product-update.input";
 import { Product } from "./product.entity";
 import { ProductMapper } from "./product.mapper";
 import { ProductService } from "./product.service";
@@ -16,14 +17,30 @@ export class ProductResolver {
     return await this.productService.findAll()
    }
 
+    //Query read by id
+    @Query(returns => ProductPublic, { name: 'getProductById'})
+    async getProductById(
+        @Args('id') id: string
+        ): Promise<ProductPublic> {
+        return await this.productService.findById(id)
+    }
+
      //Mutation  create product input
      @Mutation(returns => ProductPublic, {name: 'createProduct' })
-     async createCategory(
+     async createProduct(
         @Args('input') input: ProductCreateInput
      ): Promise<ProductPublic> {
            
          return this.productService.create(ProductMapper.toEntity(input))
      }
 
+     @Mutation(returns => ProductPublic, {name: 'updateProduct' })
+     async updateProduct(
+        @Args('input') input: ProductUpdateInput
+     ): Promise<ProductPublic> {
+           
+         return this.productService.update(ProductMapper.fromUpdateToEntity(input))
+     }
+     
 
 }
