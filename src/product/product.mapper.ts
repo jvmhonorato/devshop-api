@@ -36,6 +36,7 @@ export class ProductMapper {
         return entity
     }
     public static fromEntityToPublic(entity: Product): ProductPublic{
+        //relating entity to string
        const product =  new ProductPublic() 
        product.id = entity.id
        product.name = entity.name

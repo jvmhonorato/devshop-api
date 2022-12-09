@@ -11,10 +11,11 @@ export class ProductService {
           @InjectRepository(Product)
     private productRepository : Repository<Product>
     ){}
-
+    //add relations ids
     async findAll(): Promise<Product[]>{
         return this.productRepository.find({loadRelationIds: true})
     }
+    //add relations ids
     async findById(id): Promise<Product> {
         return this.productRepository.findOne({where:{id}, loadRelationIds:true})
     }
