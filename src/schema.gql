@@ -13,6 +13,7 @@ type product {
   name: String
   slug: String
   description: String
+  category: String
 }
 
 type Query {

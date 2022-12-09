@@ -14,7 +14,8 @@ export class ProductResolver {
 
    @Query(returns => [ProductPublic], {name: 'getAllProducts'})
    async getAllProducts(): Promise<ProductPublic[]>{
-    return await this.productService.findAll()
+    const products = await this.productService.findAll()
+    return products.map(ProductMapper.fromEntityToPublic)  
    }
 
     //Query read by id
@@ -22,7 +23,7 @@ export class ProductResolver {
     async getProductById(
         @Args('id') id: string
         ): Promise<ProductPublic> {
-        return await this.productService.findById(id)
+        return  ProductMapper.fromEntityToPublic(await this.productService.findById(id)) 
     }
 
      //Mutation  create product input
@@ -31,7 +32,7 @@ export class ProductResolver {
         @Args('input') input: ProductCreateInput
      ): Promise<ProductPublic> {
            
-         return this.productService.create(ProductMapper.toEntity(input))
+         return ProductMapper.fromEntityToPublic( await this.productService.create(ProductMapper.toEntity(input))) 
      }
 
      @Mutation(returns => ProductPublic, {name: 'updateProduct' })
@@ -39,7 +40,7 @@ export class ProductResolver {
         @Args('input') input: ProductUpdateInput
      ): Promise<ProductPublic> {
            
-         return this.productService.update(ProductMapper.fromUpdateToEntity(input))
+         return ProductMapper.fromEntityToPublic(await this.productService.update(ProductMapper.fromUpdateToEntity(input))) 
      }
      
       //Mutation  delete product input
