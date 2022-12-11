@@ -17,6 +17,9 @@ export class CategoryService {
     async findById(id): Promise<Category> {
         return this.categoryRepository.findOne({where:{id}})
     }
+    async findBySlug(slug: string): Promise<Category> {
+        return this.categoryRepository.findOne({where:[{slug}]})
+    }
 
     async create(input: Category): Promise<Category>{
         return this.categoryRepository.save(input)
