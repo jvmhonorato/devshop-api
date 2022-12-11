@@ -6,8 +6,12 @@ export class CategorySlugIsUnique implements
 ValidatorConstraintInterface{
     constructor(private readonly categoryService: CategoryService){}
     async validate(text: string,validationArguments: ValidationArguments):Promise<boolean>{
+        const id = validationArguments.object['id']
         const category = await this.categoryService.findBySlug(text)
         if(category){
+            if(id === category.id){
+                return true
+            }
             return false
         }
         return true

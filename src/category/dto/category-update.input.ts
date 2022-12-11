@@ -1,6 +1,7 @@
 import { Field, InputType } from "@nestjs/graphql";
-import { IsUUID, Length } from "class-validator";
-
+import { IsUUID, Length, Matches, Validate } from "class-validator";
+import { CategorySlugIsUnique } from "../validations/CategorySlugIsUnique";
+const mobileNumberRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 
 @InputType()
 export class CategoryUpdateInput{
@@ -14,5 +15,7 @@ export class CategoryUpdateInput{
 
     @Field()
     @Length(4,20)
+    @Matches(mobileNumberRegex)
+    @Validate(CategorySlugIsUnique)
     slug: string
 }
