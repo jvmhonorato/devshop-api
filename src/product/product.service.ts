@@ -19,6 +19,9 @@ export class ProductService {
     async findById(id): Promise<Product> {
         return this.productRepository.findOne({where:{id}, loadRelationIds:true})
     }
+    async findBySlug(slug: string): Promise<Product> {
+        return this.productRepository.findOne({where:[{slug}]})
+    }
   
     async create(input: Product): Promise<Product>{
         return this.productRepository.save(input)
