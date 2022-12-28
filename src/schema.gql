@@ -19,8 +19,10 @@ type product {
 type Query {
   getAllCategories: [Category!]!
   getCategoryById(id: String!): Category!
+  getCategoryBySlug(slug: String!): Category!
   getAllProducts: [product!]!
   getProductById(id: String!): product!
+  getProductBySlug(slug: String!): product!
 }
 
 type Mutation {

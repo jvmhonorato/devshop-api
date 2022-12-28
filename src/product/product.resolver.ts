@@ -26,6 +26,14 @@ export class ProductResolver {
         return  ProductMapper.fromEntityToPublic(await this.productService.findById(id)) 
     }
 
+    //Query read by slug
+    @Query(returns => ProductPublic, { name: 'getProductBySlug'})
+    async getProductBySlug(
+        @Args('slug') slug: string
+        ): Promise<ProductPublic> {
+            return  ProductMapper.fromEntityToPublic( await this.productService.findBySlug(slug))
+    }
+
      //Mutation  create product input
      @Mutation(returns => ProductPublic, {name: 'createProduct' })
      async createProduct(
