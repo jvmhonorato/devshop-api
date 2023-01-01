@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 //data interface of app
 
 @Entity()
-export class Category {
+export class Brand {
 
     //generate ID
     @PrimaryGeneratedColumn('uuid')

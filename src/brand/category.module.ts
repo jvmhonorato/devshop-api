@@ -1,8 +1,8 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { Category } from "./category.entity";
+import { Category } from "./brand.entity";
 import { CategoryResolver } from "./category.resolver";
-import { CategoryService } from "./category.service";
+import { CategoryService } from "./brand.service";
 import { CategorySlugIsUnique } from "./validations/BrandSlugIsUnique";
 
 @Module({

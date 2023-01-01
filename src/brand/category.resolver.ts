@@ -1,10 +1,10 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
-import { Category } from "./category.entity";
-import { CategoryService } from "./category.service";
+import { Category } from "./brand.entity";
+import { CategoryService } from "./brand.service";
 import { CategoryPublic } from "./dto/brand";
 import { CategoryCreateInput } from "./dto/brand-create.input";
 import { CategoryUpdateInput } from "./dto/brand-update.input";
-import { CategoryMapper } from "./dto/category.mapper";
+import { CategoryMapper } from "./dto/brand.mapper";
 
 //from Category
 @Resolver(of => CategoryPublic)
