@@ -9,29 +9,29 @@ import { Brand } from "./brand.entity";
 export class BrandService {
     constructor(
         @InjectRepository(Brand)
-        private categoryRepository: Repository<Brand>
+        private brandRepository: Repository<Brand>
     ){}
     async findAll(): Promise<Brand[]>{
-        return this.categoryRepository.find()
+        return this.brandRepository.find()
     }
     async findById(id): Promise<Brand> {
-        return this.categoryRepository.findOne({where:{id}})
+        return this.brandRepository.findOne({where:{id}})
     }
     async findBySlug(slug: string): Promise<Brand> {
-        return this.categoryRepository.findOne({where:[{slug}]})
+        return this.brandRepository.findOne({where:[{slug}]})
     }
 
     async create(input: Brand): Promise<Brand>{
-        return this.categoryRepository.save(input)
+        return this.brandRepository.save(input)
     }
     async update(input: Brand): Promise<Brand>{
-        await this.categoryRepository.update(input.id,input)
+        await this.brandRepository.update(input.id,input)
         return input
     }
 
     async delete(id: string): Promise<boolean>{
         try {
-            await this.categoryRepository.delete(id)
+            await this.brandRepository.delete(id)
             return true
         } catch(err) {
             return false

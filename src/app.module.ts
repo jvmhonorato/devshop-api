@@ -9,6 +9,7 @@ import  {TypeOrmModule} from '@nestjs/typeorm'
 import { Category } from './category/category.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ProductModule } from './product/product.module';
+import { BrandModule } from './brand/brand.module';
 
 
 @Module({
@@ -38,7 +39,8 @@ import { ProductModule } from './product/product.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     CategoryModule,
-    ProductModule
+    ProductModule,
+    BrandModule
   ],
   controllers: [AppController],
   providers: [AppService],

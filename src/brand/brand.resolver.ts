@@ -1,5 +1,4 @@
 import { Args, Mutation, Query, Resolver } from "@nestjs/graphql";
-import { Brand } from "./brand.entity";
 import { BrandService } from "./brand.service";
 import { BrandPublic } from "./dto/brand";
 import { BrandCreateInput } from "./dto/brand-create.input";
@@ -9,22 +8,22 @@ import { BrandMapper } from "./dto/brand.mapper";
 //from Category
 @Resolver(of => BrandPublic)
 
-export class CategoryResolver{
+export class BrandResolver{
     constructor(private readonly brandService: BrandService) {}
     //Query read all category
-    @Query(() => [BrandPublic], { name: 'getAllCategories'})
+    @Query(() => [BrandPublic], { name: 'getAllBrands'})
     async getAllCategories(): Promise<BrandPublic[]>{
         return await this.brandService.findAll()
     }
     //Query read by id
-    @Query(returns => BrandPublic, { name: 'getCategoryById'})
+    @Query(returns => BrandPublic, { name: 'getBrandyById'})
     async getCategoryById(
         @Args('id') id: string
         ): Promise<BrandPublic> {
         return await this.brandService.findById(id)
     }
       //Query read by slug
-      @Query(returns => BrandPublic, { name: 'getCategoryBySlug'})
+      @Query(returns => BrandPublic, { name: 'getBrendBySlug'})
       async getCategoryBySlug(
           @Args('slug') slug: string
           ): Promise<BrandPublic> {
@@ -32,7 +31,7 @@ export class CategoryResolver{
       }
 
   //Mutation  create category input
-    @Mutation(returns => BrandPublic, {name: 'createCategory' })
+    @Mutation(returns => BrandPublic, {name: 'createBrand' })
     async createCategory(
        @Args('input') input: BrandCreateInput
     ): Promise<BrandPublic> {
@@ -41,7 +40,7 @@ export class CategoryResolver{
     }
 
      //Mutation  update category input
-     @Mutation(returns => BrandPublic, {name: 'updateCategory' })
+     @Mutation(returns => BrandPublic, {name: 'updateBrand' })
      async updateCategory(
         @Args('input') input: BrandUpdateInput
      ): Promise<BrandPublic> {
@@ -49,7 +48,7 @@ export class CategoryResolver{
          return this.brandService.update(input)
      }
      //Mutation  delete category input
-     @Mutation(returns => Boolean, {name: 'deleteCategory' })
+     @Mutation(returns => Boolean, {name: 'deleteBrand' })
      async deleteCategory(
         @Args('id') input: string
      ): Promise<boolean> {
