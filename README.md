@@ -1,6 +1,12 @@
 ## DevShop
+<div style="display: inline_block"><br/>
+<img align="center" alt="jvmh-nestjs" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg" />
+ <img align="center" alt="jvmh-nodejs" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg" />
+<img align="center" alt="jvmh-nodejs" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" />
+<img align="center" alt="jvmh-react" height="50" width="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original-wordmark.svg"  />
 
-<img align="center" alt="jvmh-nestjs" height="60" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg" />
+</div>
+
 
 ## Description
 
