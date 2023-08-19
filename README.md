@@ -1,6 +1,6 @@
 ## DevShop
 
-
+<img align="center" alt="jvmh-nestjs" height="60" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg" />
 
 ## Description
 
