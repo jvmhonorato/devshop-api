@@ -115,7 +115,7 @@ $ npm run typeorm migration:run
 
 If you'd like to contribute to this project, please fork the repository and submit a pull request. You can also open an issue if you have any questions or suggestions.
 
-## License
+
 
 ## License
 
