@@ -8,7 +8,7 @@
 </div>
 
 
- # Technical Description: Nest.js API with PostgreSQL and GraphQL
+ # Nest.js API with PostgreSQL and GraphQL
 
 ## Overview
 
